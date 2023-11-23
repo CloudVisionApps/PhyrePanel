@@ -10,6 +10,7 @@ DEPENDENCIES_LIST=(
     "curl"
     "wget"
     "git"
+    "nginx"
     "nodejs"
     "npm"
     "unzip"
@@ -27,3 +28,5 @@ for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
         echo "Dependency $DEPENDENCY is installed."
     fi
 done
+
+php -v
