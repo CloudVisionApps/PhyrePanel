@@ -1,14 +1,13 @@
 #!/bin/bash
+MAIN_DIR="/alpha-x-panel/raw-repo"
 
+apt install -y git
+cd /
+mkdir -p /alpha-x-panel/raw-repo
+git clone https://github.com/CloudVisionApps/AlphaXPanel.git /alpha-x-panel/raw-repo
 
-
-exit
-
-MAIN_DIR="/AlphaXPanel"
 HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
-
-exit
 
 # Update the system
 apt update -y
@@ -81,10 +80,6 @@ done
 systemctl start nginx
 systemctl enable nginx
 
-
-
-
-exit
 # Change NGINX index.html
 rm -rf /var/www/html/*
 cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
