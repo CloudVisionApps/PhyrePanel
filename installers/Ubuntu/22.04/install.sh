@@ -7,6 +7,15 @@ HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 # Update the system
 apt update && apt upgrade -y
 
+REPOSITORIES_LIST=(
+    "ppa:ondrej/php"
+)
+
+# Check if the repositories are installed
+for REPOSITORY in "${REPOSITORIES_LIST[@]}"; do
+  add-apt-repository -y $REPOSITORY
+done
+
 DEPENDENCIES_LIST=(
     "curl"
     "wget"
@@ -17,7 +26,23 @@ DEPENDENCIES_LIST=(
     "unzip"
     "zip"
     "tar"
-    "php"
+    "php8.2"
+    "php8.2-fpm"
+    "php8.2-cli"
+    "php8.2-json"
+    "php8.2-mysql"
+    "php8.2-zip"
+    "php8.2-gd"
+    "php8.2-mbstring"
+    "php8.2-curl"
+    "php8.2-xml"
+    "php8.2-pear"
+    "php8.2-bcmath"
+    "lsb-release"
+    "gnupg2"
+    "ca-certificates"
+    "apt-transport-https"
+    "software-properties-common"
 )
 # Check if the dependencies are installed
 for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
@@ -43,6 +68,9 @@ for DEPENDENCY in "${DEPENDENCIES_FOR_REMOVE_LIST[@]}"; do
     fi
 done
 
+
+# sudo ufw allow proto tcp from any to any port 80,443
+
 # Run Nginx
 systemctl start nginx
 systemctl enable nginx
@@ -65,3 +93,5 @@ systemctl restart nginx
 
 mkdir -p /usr/local/alpha-x-panel/web
 cp -r $MAIN_DIR/web/* /usr/local/alpha-x-panel/web
+
+#systemctl status php8.2-fpm.service
