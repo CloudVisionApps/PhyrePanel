@@ -114,8 +114,8 @@ COMPOSER_ALLOW_SUPERUSER=1 php8.2 composer.phar install --no-dev --optimize-auto
 # Configure the application
 cp .env.example .env
 php8.2 artisan key:generate
-php8.2 artisan migrate --force
-php8.2 artisan db:seed --force
+php8.2 artisan migrate
+php8.2 artisan db:seed
 
 sudo chmod -R o+w /usr/local/alpha-x-panel/web/storage/
 sudo chmod -R o+w /usr/local/alpha-x-panel/web/bootstrap/cache/
