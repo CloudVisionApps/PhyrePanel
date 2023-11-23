@@ -35,6 +35,12 @@ DEPENDENCIES_LIST=(
     "mysql-common"
     "mysql-server"
     "mysql-client"
+    "lsb-release"
+    "gnupg2"
+    "ca-certificates"
+    "apt-transport-https"
+    "software-properties-common"
+    "supervisor"
     "php8.2"
     "php8.2-fpm"
     "php8.2-cli"
@@ -48,11 +54,6 @@ DEPENDENCIES_LIST=(
     "php8.2-intl"
     "php8.2-pear"
     "php8.2-bcmath"
-    "lsb-release"
-    "gnupg2"
-    "ca-certificates"
-    "apt-transport-https"
-    "software-properties-common"
 )
 # Check if the dependencies are installed
 for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
@@ -128,6 +129,7 @@ sed -i "s/^APP_NAME=.*/APP_NAME=AlphaXPanel/" .env
 sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$PANEL_DB_NAME/" .env
 sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$PANEL_DB_USER/" .env
 sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$PANEL_DB_PASSWORD/" .env
+sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=database/" .env
 
 php8.2 artisan key:generate
 php8.2 artisan migrate
