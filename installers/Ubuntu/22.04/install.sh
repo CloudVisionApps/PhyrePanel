@@ -4,7 +4,7 @@ HELPERS_DIR="$(dirname "$(pwd)")/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 
 # Update the system
-#apt update && apt upgrade -y
+apt update && apt upgrade -y
 
 DEPENDENCIES_LIST=(
     "curl"
