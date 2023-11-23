@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HELPERS_DIR="$(dirname "$(pwd)")/shell/helpers/ubuntu"
+HELPERS_DIR="/AlphaXPanel/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 
 # Update the system
@@ -37,7 +37,7 @@ for DEPENDENCY in "${DEPENDENCIES_FOR_REMOVE_LIST[@]}"; do
     if command_is_installed $DEPENDENCY; then
         echo "Dependency $DEPENDENCY is installed."
         echo "Removing $DEPENDENCY..."
-        apt remove -y $DEPENDENCY
+        apt purge -y $DEPENDENCY
         apt autoremove -y
     fi
 done
