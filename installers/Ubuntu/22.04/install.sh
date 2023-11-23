@@ -29,4 +29,21 @@ for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
     fi
 done
 
+DEPENDENCIES_FOR_REMOVE_LIST=(
+    "apache2"
+)
+# Check if the dependencies are installed
+for DEPENDENCY in "${DEPENDENCIES_FOR_REMOVE_LIST[@]}"; do
+    if command_is_installed $DEPENDENCY; then
+        echo "Dependency $DEPENDENCY is installed."
+        echo "Removing $DEPENDENCY..."
+        apt remove -y $DEPENDENCY
+        apt autoremove -y
+    fi
+done
+
+# Run Nginx
+systemctl start nginx
+systemctl enable nginx
+
 php -v
