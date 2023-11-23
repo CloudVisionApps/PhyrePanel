@@ -47,5 +47,18 @@ done
 systemctl start nginx
 systemctl enable nginx
 
+# Change NGINX index.html
 rm -rf /var/www/html/*
 cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
+
+# Add NGINX config
+cp $MAIN_DIR/configurations/ubuntu/nginx/panel.conf /etc/nginx/sites-available/alphaxpanel.conf
+
+# Create a symbolic link
+if [ -f /etc/nginx/sites-enabled/alphaxpanel.conf ]; then
+    rm -rf /etc/nginx/sites-enabled/alphaxpanel.conf
+fi
+ln -s /etc/nginx/sites-available/alphaxpanel.conf /etc/nginx/sites-enabled/alphaxpanel.conf
+
+# Restart NGINX
+systemctl restart nginx
