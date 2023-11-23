@@ -1,6 +1,7 @@
 #!/bin/bash
 
-HELPERS_DIR="/AlphaXPanel/shell/helpers/ubuntu"
+MAIN_DIR="/AlphaXPanel"
+HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 
 # Update the system
@@ -46,4 +47,5 @@ done
 systemctl start nginx
 systemctl enable nginx
 
-php -v
+rm -rf /var/www/html/*
+cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
