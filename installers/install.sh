@@ -45,4 +45,6 @@ if [[ ! -f $DISTRO_INSTALLER_FILE ]]; then
     exit 1
 fi
 
+wget
+
 bash $DISTRO_INSTALLER_FILE

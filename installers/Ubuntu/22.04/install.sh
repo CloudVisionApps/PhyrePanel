@@ -1,11 +1,17 @@
 #!/bin/bash
 
+
+
+exit
+
 MAIN_DIR="/AlphaXPanel"
 HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 
+exit
+
 # Update the system
-apt update && apt upgrade -y
+apt update -y
 
 REPOSITORIES_LIST=(
     "ppa:ondrej/php"
@@ -75,6 +81,10 @@ done
 systemctl start nginx
 systemctl enable nginx
 
+
+
+
+exit
 # Change NGINX index.html
 rm -rf /var/www/html/*
 cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
