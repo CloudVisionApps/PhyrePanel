@@ -8,6 +8,7 @@ git clone https://github.com/CloudVisionApps/AlphaXPanel.git /alpha-x-panel/raw-
 
 HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
+. $HELPERS_DIR"/create-mysql-db-and-user.sh"
 
 # Update the system
 apt update -y
@@ -114,8 +115,20 @@ php8.2 -r "unlink('composer-setup.php');"
 
 COMPOSER_ALLOW_SUPERUSER=1 php8.2 composer.phar install --no-dev --optimize-autoloader --no-interaction
 
+# Create database
+PANEL_DB_NAME="alphaxpanel_db"
+PANEL_DB_USER="alphaxpanel_user"
+PANEL_DB_PASSWORD="alphaxpanel_password"
+create_mysql_db_and_user $PANEL_DB_NAME $PANEL_DB_USER $PANEL_DB_PASSWORD
+
 # Configure the application
 cp .env.example .env
+
+sed -i "s/^APP_NAME=.*/APP_NAME=AlphaXPanel/" .env
+sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$PANEL_DB_NAME/" .env
+sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$PANEL_DB_USER/" .env
+sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$PANEL_DB_PASSWORD/" .env
+
 php8.2 artisan key:generate
 php8.2 artisan migrate
 php8.2 artisan db:seed
