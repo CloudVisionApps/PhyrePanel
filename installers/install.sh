@@ -42,7 +42,7 @@ if [[ ! -f $DISTRO_INSTALLER_FILE ]]; then
     echo "AlphaXPanel not supporting this version of distribution"
     echo "Distro: ${DISTRO_NAME} Version: ${DISTRO_VERSION}"
     echo "Exiting..."
-   # exit 1
+    exit 1
 fi
 
 bash $DISTRO_INSTALLER_FILE
