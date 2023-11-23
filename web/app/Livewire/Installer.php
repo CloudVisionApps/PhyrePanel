@@ -24,9 +24,6 @@ class Installer extends Component
             'password_confirmation' => 'required|min:8',
         ]);
 
-        Artisan::call('migrate:fresh --seed');
-        Artisan::call('storage:link');
-
         $createUser = new User();
         $createUser->name = $this->name;
         $createUser->email = $this->email;
