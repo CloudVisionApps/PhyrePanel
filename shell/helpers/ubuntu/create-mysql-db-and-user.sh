@@ -20,5 +20,6 @@ MYSQL_SCRIPT
   echo "Username: $1"
   echo "Database: $1"
   echo "Password: $PASS"
+  echo "Success!"
 
 }
