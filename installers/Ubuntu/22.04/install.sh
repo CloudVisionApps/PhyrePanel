@@ -102,4 +102,13 @@ php8.2 composer-setup.php
 php8.2 -r "unlink('composer-setup.php');"
 php8.2 composer.phar install --no-dev --optimize-autoloader --no-interaction
 
+# Configure the application
+cp .env.example .env
+php8.2 artisan key:generate
+php8.2 artisan migrate --force
+php8.2 artisan db:seed --force
+
+sudo chmod -R o+w /usr/local/alpha-x-panel/web/storage/
+sudo chmod -R o+w /usr/local/alpha-x-panel/web/bootstrap/cache/
+
 #systemctl status php8.2-fpm.service
