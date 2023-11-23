@@ -31,6 +31,8 @@ DEPENDENCIES_LIST=(
     "unzip"
     "zip"
     "tar"
+    "mysql-server"
+    "mysql-client"
     "php8.2"
     "php8.2-fpm"
     "php8.2-cli"
