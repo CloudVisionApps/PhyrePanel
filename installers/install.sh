@@ -30,3 +30,19 @@ if [[ $(cat /etc/os-release | grep -w "ID_LIKE" | cut -d "=" -f 2) != "debian" ]
     exit 1
 fi
 
+# Check if the user is running a supported distro version
+DISTRO_VERSION=$(cat /etc/os-release | grep -w "VERSION_ID" | cut -d "=" -f 2)
+DISTRO_VERSION=${DISTRO_VERSION//\"/} # Remove quotes from version string
+
+DISTRO_NAME=$(cat /etc/os-release | grep -w "NAME" | cut -d "=" -f 2)
+DISTRO_NAME=${DISTRO_NAME//\"/} # Remove quotes from name string
+
+DISTRO_INSTALLER_FILE="./${DISTRO_NAME}/${DISTRO_VERSION}/install.sh"
+if [[ ! -f $DISTRO_INSTALLER_FILE ]]; then
+    echo "AlphaXPanel not supporting this version of distribution"
+    echo "Distro: ${DISTRO_NAME} Version: ${DISTRO_VERSION}"
+    echo "Exiting..."
+   # exit 1
+fi
+
+bash $DISTRO_INSTALLER_FILE
