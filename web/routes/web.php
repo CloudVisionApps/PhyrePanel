@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/admin');
+
+    if (file_exists(storage_path('installed'))) {
+        return redirect('/admin');
+    }
+
+    return view('welcome');
+
 });
