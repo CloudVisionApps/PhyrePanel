@@ -129,7 +129,7 @@ sed -i "s/^APP_NAME=.*/APP_NAME=AlphaXPanel/" .env
 sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$PANEL_DB_NAME/" .env
 sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$PANEL_DB_USER/" .env
 sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$PANEL_DB_PASSWORD/" .env
-sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=database/" .env
+sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=mysql/" .env
 
 php8.2 artisan key:generate
 php8.2 artisan migrate
