@@ -21,4 +21,4 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/CloudVisionApps/AlphaXPanel/main/installers/install.sh
         chmod +x install.sh
-        ./install.sh
+        sudo ./install.sh
