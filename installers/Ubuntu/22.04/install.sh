@@ -62,3 +62,6 @@ ln -s /etc/nginx/sites-available/alphaxpanel.conf /etc/nginx/sites-enabled/alpha
 
 # Restart NGINX
 systemctl restart nginx
+
+mkdir -p /usr/local/alpha-x-panel/web
+cp -r $MAIN_DIR/web/* /usr/local/alpha-x-panel/web
