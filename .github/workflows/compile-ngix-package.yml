@@ -22,4 +22,17 @@ jobs:
         cd compilators/debian
         chmod 775 ./nginx-compile.sh
         ./nginx-compile.sh
-        ls
+
+#    - uses: stefanzweifel/git-auto-commit-action@v5
+#      with:
+#        commit_user_name: Cloud Vision Bot
+#        commit_user_email: bobicloudvision@gmail.com
+#        commit_author: Cloud Vision Bot <bobicloudvision@gmail.com>
+#
+#        commit_message: Upload compiled packages
+#        repository: ./
+#        skip_checkout: true
+#        push_options: '--force'
+#        skip_fetch: true
+#        create_branch: true
+#        # status_options: '--untracked-files=no'
