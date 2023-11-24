@@ -14,7 +14,7 @@ sudo make
 sudo make install
 
 sudo mkdir alphax-nginx-1.20.0
-sudo cd alphax-nginx-1.20.0
+cd alphax-nginx-1.20.0
 sudo mkdir DEBIAN
 sudo mkdir usr
 sudo mkdir usr/local
@@ -22,6 +22,6 @@ sudo mkdir usr/local/alphax
 
 sudo mv /usr/local/alphax/nginx usr/local/alphax
 
-ls
+ls -l
 
 
