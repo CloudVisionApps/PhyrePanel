@@ -13,18 +13,15 @@ sudo ./configure --prefix=/usr/local/alphax/nginx
 sudo make
 sudo make install
 
+sudo mkdir alphax-nginx-1.20.0
+sudo cd alphax-nginx-1.20.0
+sudo mkdir DEBIAN
+sudo mkdir usr
+sudo mkdir usr/local
+sudo mkdir usr/local/alphax
+
+sudo mv /usr/local/alphax/nginx usr/local/alphax
+
 ls
 
 
-#
-#mkdir alphax-nginx-1.20.0
-#cd alphax-nginx-1.20.0
-#mkdir DEBIAN
-#mkdir usr
-#mkdir usr/local
-#mkdir usr/local/alphax
-#
-#mv /usr/local/alphax/nginx usr/local/alphax
-#cp control DEBIAN
-#
-#
