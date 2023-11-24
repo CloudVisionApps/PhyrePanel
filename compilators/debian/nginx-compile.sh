@@ -1,13 +1,7 @@
 #!/bin/bash
 
 # Install dependencies
-#apt install build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
-
-rm -rf "alphaXpanel-compilators"
-
-mkdir "alphaXpanel-compilators"
-mkdir "alphaXpanel-compilators/nginx"
-cd "alphaXpanel-compilators/nginx"
+apt install build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
 
 #Download nginx source
 wget http://nginx.org/download/nginx-1.20.0.tar.gz
