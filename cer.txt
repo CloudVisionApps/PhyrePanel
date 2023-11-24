@@ -1,0 +1,11 @@
+sudo ufw allow 22
+
+
+sudo apt install certbot python3-certbot-nginx -y
+sudo ufw allow 3036
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+sudo ufw status
+
+sudo certbot --nginx -d webesembly.com -d www.webesembly.com
+sudo systemctl status certbot.timer
