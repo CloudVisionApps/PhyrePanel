@@ -9,9 +9,9 @@ tar -zxvf nginx-1.20.0.tar.gz
 cd nginx-1.20.0
 
 # Configure nginx
-./configure --prefix=/usr/local/alphax/nginx
-make
-make install
+sudo ./configure --prefix=/usr/local/alphax/nginx
+sudo make
+sudo make install
 
 ls
 
