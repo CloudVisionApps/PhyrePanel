@@ -23,6 +23,6 @@ sudo mkdir usr/local
 sudo mkdir usr/local/alphax
 
 sudo mv /usr/local/alphax/nginx usr/local/alphax
-cp $MAIN_DIR/control DEBIAN
+sudo cp $MAIN_DIR/control DEBIAN
 cd DEBIAN
 ls
