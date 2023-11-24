@@ -19,14 +19,18 @@ cd nginx-1.20.0
 make
 make install
 
-mkdir alphax-nginx-1.20.0
-cd alphax-nginx-1.20.0
-mkdir DEBIAN
-mkdir usr
-mkdir usr/local
-mkdir usr/local/alphax
-
-mv /usr/local/alphax/nginx usr/local/alphax
-cp control DEBIAN
+ls
 
 
+#
+#mkdir alphax-nginx-1.20.0
+#cd alphax-nginx-1.20.0
+#mkdir DEBIAN
+#mkdir usr
+#mkdir usr/local
+#mkdir usr/local/alphax
+#
+#mv /usr/local/alphax/nginx usr/local/alphax
+#cp control DEBIAN
+#
+#
