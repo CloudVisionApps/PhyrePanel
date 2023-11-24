@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MAIN_DIR=$(pwd)
+
 # Install dependencies
 apt install build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
 
@@ -21,5 +23,6 @@ sudo mkdir usr/local
 sudo mkdir usr/local/alphax
 
 sudo mv /usr/local/alphax/nginx usr/local/alphax
-
+cp $MAIN_DIR/control DEBIAN
+cd DEBIAN
 ls
