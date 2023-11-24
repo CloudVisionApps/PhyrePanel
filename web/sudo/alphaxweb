@@ -1,0 +1,4 @@
+Defaults:root !requiretty
+
+# sudo is limited to alphaxpanel scripts
+alphaxweb   ALL=NOPASSWD:/usr/local/alphaxpanel/bin/*

@@ -1,0 +1,34 @@
+apt install build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
+
+wget  http://nginx.org/download/nginx-1.20.0.tar.gz
+tar -zxvf nginx-1.20.0.tar.gz
+cd nginx-1.20.0
+
+./configure --prefix=/usr/local/alphax/nginx
+./configure
+        --prefix=/var/www/html
+        --sbin-path=/usr/sbin/nginx
+        --conf-path=/etc/nginx/nginx.conf
+        --http-log-path=/var/log/nginx/access.log
+        --error-log-path=/var/log/nginx/error.log
+        --with-pcre
+        --lock-path=/var/lock/nginx.lock
+        --pid-path=/var/run/nginx.pid
+        --with-http_ssl_module
+        --with-http_image_filter_module=dynamic
+        --modules-path=/etc/nginx/modules
+        --with-http_v2_module
+        --with-stream=dynamic
+        --with-http_addition_module
+        --with-http_mp4_module
+
+
+
+dpkg-deb -Zxz --build
+dpkg-deb --build mynginx
+
+for install
+sudo dpkg -i package-name.deb
+
+for remove
+sudo dpkg -r package-name

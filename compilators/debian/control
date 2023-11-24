@@ -1,0 +1,10 @@
+Source: alphax-nginx
+Package: alphax-nginx
+Priority: optional
+Version: 1.22.0
+Section: web
+Maintainer: Cloud Vision Ltd.
+Homepage: https://www.cloudvision.bg
+Architecture: amd64
+Depends: nginx
+Description: Nginx web server

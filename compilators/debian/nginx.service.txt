@@ -1,0 +1,22 @@
+
+# Create nginx service
+cat > /etc/systemd/system/alphax-nginx.service << EOF
+[Unit]
+Description=alphax-nginx
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/alphax/nginx/sbin/nginx
+ExecReload=/usr/local/alphax/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/alphax/nginx/sbin/nginx -s quit
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Start nginx service
+systemctl daemon-reload
+systemctl enable alphax-nginx.service
+systemctl start alphax-nginx.service
