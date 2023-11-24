@@ -19,5 +19,7 @@ jobs:
 
     - name: Compile NGINX
       run: |
+        cd compilators/debian
+        chmod 775 ./nginx-compile.sh
+        ./nginx-compile.sh
         ls
-
