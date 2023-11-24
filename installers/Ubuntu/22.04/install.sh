@@ -1,6 +1,8 @@
 #!/bin/bash
 MAIN_DIR="/alpha-x-panel/raw-repo"
 
+apt-get update && apt-get install ca-certificates
+
 apt install -y git
 cd /
 mkdir -p /alpha-x-panel/raw-repo
