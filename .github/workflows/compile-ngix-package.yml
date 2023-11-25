@@ -34,8 +34,8 @@ jobs:
         commit_author: Cloud Vision Bot <bobicloudvision@gmail.com>
         commit_message: Upload compiled packages
         repository: ./compilators/debian/dist
-        skip_checkout: true
-        push_options: '--force'
-        skip_fetch: true
-        create_branch: true
+        #skip_checkout: true
+        #push_options: '--force'
+        #skip_fetch: true
+        #create_branch: true
         # status_options: '--untracked-files=no'
