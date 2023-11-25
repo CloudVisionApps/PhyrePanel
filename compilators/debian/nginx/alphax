@@ -7,7 +7,7 @@
 # Required-Stop:     $local_fs $remote_fs $network $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: starts the hestia control panel
+# Short-Description: starts the alphax control panel
 # Description:       starts nginx using start-stop-daemon
 ### END INIT INFO
 
