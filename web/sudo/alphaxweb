@@ -1,4 +1,4 @@
 Defaults:root !requiretty
 
-# sudo is limited to alphaxpanel scripts
-alphaxweb   ALL=NOPASSWD:/usr/local/alphaxpanel/bin/*
+# sudo is limited to PhyrePanel scripts
+phyreweb   ALL=NOPASSWD:/usr/local/PhyrePanel/bin/*

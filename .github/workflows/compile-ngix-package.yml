@@ -1,4 +1,4 @@
-name: Compile AlphaXPanel Packages
+name: Compile PhyrePanel Packages
 
 on:
   push:

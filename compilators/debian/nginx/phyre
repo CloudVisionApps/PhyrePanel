@@ -1,22 +1,22 @@
 #!/bin/sh
 
 ### BEGIN INIT INFO
-# Provides:       alphax
+# Provides:       phyre
 #                 internal nginx
 # Required-Start:    $local_fs $remote_fs $network $syslog
 # Required-Stop:     $local_fs $remote_fs $network $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: starts the alphax control panel
+# Short-Description: starts the phyre control panel
 # Description:       starts nginx using start-stop-daemon
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-NGINX_DAEMON=/usr/local/alphax/nginx/sbin/alphax-nginx
-NGINX_NAME=alphax-nginx
-NGINX_DESC=alphax-nginx
-NGINX_PID=/run/alphax-nginx.pid
-NGINX_CONF=/usr/local/alphax/nginx/conf/nginx.conf
+NGINX_DAEMON=/usr/local/phyre/nginx/sbin/phyre-nginx
+NGINX_NAME=phyre-nginx
+NGINX_DESC=phyre-nginx
+NGINX_PID=/run/phyre-nginx.pid
+NGINX_CONF=/usr/local/phyre/nginx/conf/nginx.conf
 
 set -e
 
@@ -52,11 +52,11 @@ case "$1" in
 		;;
 
 	status)
-		status_of_proc -p $NGINX_PID "$NGINX_DAEMON" alphax-nginx
+		status_of_proc -p $NGINX_PID "$NGINX_DAEMON" phyre-nginx
 		;;
 
 	*)
-		echo "Usage: alphax {start|stop|restart|status}" >&2
+		echo "Usage: phyre {start|stop|restart|status}" >&2
 		exit 1
 		;;
 esac

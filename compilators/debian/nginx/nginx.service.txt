@@ -1,15 +1,15 @@
 
 # Create nginx service
-cat > /etc/systemd/system/alphax-nginx.service << EOF
+cat > /etc/systemd/system/phyre-nginx.service << EOF
 [Unit]
-Description=alphax-nginx
+Description=phyre-nginx
 After=network.target
 
 [Service]
 Type=forking
-ExecStart=/usr/local/alphax/nginx/sbin/nginx
-ExecReload=/usr/local/alphax/nginx/sbin/nginx -s reload
-ExecStop=/usr/local/alphax/nginx/sbin/nginx -s quit
+ExecStart=/usr/local/phyre/nginx/sbin/nginx
+ExecReload=/usr/local/phyre/nginx/sbin/nginx -s reload
+ExecStop=/usr/local/phyre/nginx/sbin/nginx -s quit
 PrivateTmp=true
 
 [Install]
@@ -18,5 +18,5 @@ EOF
 
 # Start nginx service
 systemctl daemon-reload
-systemctl enable alphax-nginx.service
-systemctl start alphax-nginx.service
+systemctl enable phyre-nginx.service
+systemctl start phyre-nginx.service

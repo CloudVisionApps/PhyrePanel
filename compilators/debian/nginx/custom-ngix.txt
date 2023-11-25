@@ -4,7 +4,7 @@ wget  http://nginx.org/download/nginx-1.20.0.tar.gz
 tar -zxvf nginx-1.20.0.tar.gz
 cd nginx-1.20.0
 
-./configure --prefix=/usr/local/alphax/nginx
+./configure --prefix=/usr/local/phyre/nginx
 ./configure
         --prefix=/var/www/html
         --sbin-path=/usr/sbin/nginx

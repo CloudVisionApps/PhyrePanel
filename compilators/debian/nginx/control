@@ -1,5 +1,5 @@
-Source: alphax-nginx
-Package: alphax-nginx
+Source: phyre-nginx
+Package: phyre-nginx
 Priority: optional
 Version: 1.22.0
 Section: web

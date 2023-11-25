@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => 'AlphaX - Hosting Panel',
+    'name' => 'PhyrePanel - Web Hosting Control Panel',
 
     /*
     |--------------------------------------------------------------------------

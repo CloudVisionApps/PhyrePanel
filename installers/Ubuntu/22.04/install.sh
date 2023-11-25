@@ -1,12 +1,12 @@
 #!/bin/bash
-MAIN_DIR="/alpha-x-panel/raw-repo"
+MAIN_DIR="/phyre/raw-repo"
 
 apt-get update && apt-get install ca-certificates
 
 apt install -y git
 cd /
-mkdir -p /alpha-x-panel/raw-repo
-git clone https://github.com/CloudVisionApps/AlphaXPanel.git /alpha-x-panel/raw-repo
+mkdir -p /phyre/raw-repo
+git clone https://github.com/CloudVisionApps/PhyrePanel.git /phyre/raw-repo
 
 HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
@@ -93,23 +93,23 @@ rm -rf /var/www/html/*
 cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
 
 # Add NGINX config
-cp $MAIN_DIR/configurations/ubuntu/nginx/panel.conf /etc/nginx/sites-available/alphaxpanel.conf
+cp $MAIN_DIR/configurations/ubuntu/nginx/panel.conf /etc/nginx/sites-available/PhyrePanel.conf
 
 # Create a symbolic link
-if [ -f /etc/nginx/sites-enabled/alphaxpanel.conf ]; then
-    rm -rf /etc/nginx/sites-enabled/alphaxpanel.conf
+if [ -f /etc/nginx/sites-enabled/PhyrePanel.conf ]; then
+    rm -rf /etc/nginx/sites-enabled/PhyrePanel.conf
 fi
-ln -s /etc/nginx/sites-available/alphaxpanel.conf /etc/nginx/sites-enabled/alphaxpanel.conf
+ln -s /etc/nginx/sites-available/PhyrePanel.conf /etc/nginx/sites-enabled/PhyrePanel.conf
 
 # Restart NGINX
 systemctl restart nginx
 
-mkdir -p /usr/local/alpha-x-panel/web
-cp -r $MAIN_DIR/web/* /usr/local/alpha-x-panel/web
-cp $MAIN_DIR/web/.env.example /usr/local/alpha-x-panel/web/.env.example
+mkdir -p /usr/local/phyre/web
+cp -r $MAIN_DIR/web/* /usr/local/phyre/web
+cp $MAIN_DIR/web/.env.example /usr/local/phyre/web/.env.example
 
 # Install Composer
-cd /usr/local/alpha-x-panel/web
+cd /usr/local/phyre/web
 
 php8.2 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php8.2 -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -119,15 +119,15 @@ php8.2 -r "unlink('composer-setup.php');"
 COMPOSER_ALLOW_SUPERUSER=1 php8.2 composer.phar install --no-dev --optimize-autoloader --no-interaction
 
 # Create database
-PANEL_DB_NAME="alphaxpanel_db"
-PANEL_DB_USER="alphaxpanel_user"
-PANEL_DB_PASSWORD="alphaxpanel_password"
+PANEL_DB_NAME="PhyrePanel_db"
+PANEL_DB_USER="PhyrePanel_user"
+PANEL_DB_PASSWORD="PhyrePanel_password"
 create_mysql_db_and_user $PANEL_DB_NAME $PANEL_DB_USER $PANEL_DB_PASSWORD
 
 # Configure the application
 cp .env.example .env
 
-sed -i "s/^APP_NAME=.*/APP_NAME=AlphaXPanel/" .env
+sed -i "s/^APP_NAME=.*/APP_NAME=PhyrePanel/" .env
 sed -i "s/^DB_DATABASE=.*/DB_DATABASE=$PANEL_DB_NAME/" .env
 sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$PANEL_DB_USER/" .env
 sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$PANEL_DB_PASSWORD/" .env
@@ -137,7 +137,7 @@ php8.2 artisan key:generate
 php8.2 artisan migrate
 php8.2 artisan db:seed
 
-sudo chmod -R o+w /usr/local/alpha-x-panel/web/storage/
-sudo chmod -R o+w /usr/local/alpha-x-panel/web/bootstrap/cache/
+sudo chmod -R o+w /usr/local/phyre/web/storage/
+sudo chmod -R o+w /usr/local/phyre/web/bootstrap/cache/
 
 #systemctl status php8.2-fpm.service

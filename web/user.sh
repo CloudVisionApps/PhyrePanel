@@ -2,11 +2,11 @@
 random_password="wfawfafwafwafaw"
 email="wfafwafwa@abv.bg"
 
-# Create the new alphaxweb user
-#/usr/sbin/useradd "alphaxweb" -c "$email" --no-create-home
-# do not allow login into alphaxweb user
-echo alphaxweb:$random_password | sudo chpasswd -e
+# Create the new phyreweb user
+#/usr/sbin/useradd "phyreweb" -c "$email" --no-create-home
+# do not allow login into phyreweb user
+echo phyreweb:$random_password | sudo chpasswd -e
 
 mkdir -p /etc/sudoers.d
-cp -f /usr/local/alpha-x-panel/web/sudo/alphaxweb /etc/sudoers.d/
-chmod 440 /etc/sudoers.d/alphaxweb
+cp -f /usr/local/phyre/web/sudo/phyreweb /etc/sudoers.d/
+chmod 440 /etc/sudoers.d/phyreweb

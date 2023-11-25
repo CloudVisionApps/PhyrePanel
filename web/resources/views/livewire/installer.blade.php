@@ -2,7 +2,7 @@
     <div class="w-[36rem]">
         <div>
             <h1 class="text-3xl font-bold">
-                Welcome to AlphaXPanel!
+                Welcome to PhyrePanel!
             </h1>
         </div>
         <div>
@@ -15,7 +15,7 @@
             <div>
                 <h2 class="text-2xl">Let's make installation!</h2>
                 <p>
-                    Please fill in the form below to install AlphaXPanel.
+                    Please fill in the form below to install PhyrePanel.
                 </p>
             </div>
             <div class="m-auto w-1/2 my-6">
@@ -59,10 +59,10 @@
 
         <div class="mt-6 text-sm">
             <p>
-                <a href="https://alphaxpanel.com" class="text-blue-500 hover:text-blue-700">AlphaXPanel</a> is a free and open-source web hosting control panel written in PHP.
+                <a href="https://PhyrePanel.com" class="text-blue-500 hover:text-blue-700">PhyrePanel</a> is a free and open-source web hosting control panel written in PHP.
             </p>
             <p>
-                AlphaXPanel is designed to work with either Apache or Nginx as a web server running on Ubuntu 20.04 LTS.
+                PhyrePanel is designed to work with either Apache or Nginx as a web server running on Ubuntu 20.04 LTS.
             </p>
         </div>
     </div>
