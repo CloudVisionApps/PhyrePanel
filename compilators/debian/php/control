@@ -1,0 +1,9 @@
+Source: phyre-php
+Package: phyre-php
+Priority: optional
+Version: 8.2.0
+Section: web
+Maintainer: CloudVision Ltd.
+Homepage: https://www.phyrepanel.com
+Architecture: amd64
+Description: Phyre Panel PHP SDK

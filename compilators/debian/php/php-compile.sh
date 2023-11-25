@@ -23,9 +23,33 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-zip \
 				--enable-mbstring
 
-#sudo ./configure --prefix=/usr/local/phyre/php \
-#  --enable-fpm --with-fpm-user=admin --with-fpm-group=admin
-
 # Compile PHP
 sudo make
 sudo make install
+
+PACKAGE_MAIN_DIR=$MAIN_DIR/phyre-php-8.2.0
+sudo mkdir $PACKAGE_MAIN_DIR
+
+# Create debian package directories
+sudo mkdir -p $PACKAGE_MAIN_DIR/DEBIAN
+
+# Copy php compiled files
+sudo mv /usr/local/phyre/php $PACKAGE_MAIN_DIR/usr/local/phyre
+
+# Copy debian package META file
+sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
+sudo cp $MAIN_DIR/postinst $PACKAGE_MAIN_DIR/DEBIAN
+sudo cp $MAIN_DIR/postrm $PACKAGE_MAIN_DIR/DEBIAN
+
+# Set debian package post files permissions
+sudo chmod +x $PACKAGE_MAIN_DIR/DEBIAN/postinst
+sudo chmod +x $PACKAGE_MAIN_DIR/DEBIAN/postrm
+
+# Make debian package
+sudo dpkg-deb --build $PACKAGE_MAIN_DIR
+sudo dpkg --info $MAIN_DIR/phyre-php-8.2.0.deb
+sudo dpkg --contents $MAIN_DIR/phyre-php-8.2.0.deb
+
+# Move debian package to dist folder
+sudo mkdir -p $MAIN_DIR/dist
+sudo mv $MAIN_DIR/phyre-php-8.2.0.deb $MAIN_DIR/dist
