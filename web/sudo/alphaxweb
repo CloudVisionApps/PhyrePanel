@@ -1,4 +1,4 @@
 Defaults:root !requiretty
 
 # sudo is limited to PhyrePanel scripts
-phyreweb   ALL=NOPASSWD:/usr/local/PhyrePanel/bin/*
+phyreweb   ALL=NOPASSWD:/usr/local/phyre/bin/*
