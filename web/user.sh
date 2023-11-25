@@ -1,6 +1,6 @@
 # Generate a random password
-random_password="wfawfafwafwafaw"
-email="wfafwafwa@abv.bg"
+random_password="$(openssl rand -base64 32)"
+email="email1@phyrepanel.com"
 
 # Create the new phyreweb user
 /usr/sbin/useradd "phyreweb" -c "$email" --no-create-home

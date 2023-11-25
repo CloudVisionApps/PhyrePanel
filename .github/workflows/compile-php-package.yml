@@ -1,4 +1,4 @@
-name: Compile PhyrePanel NGINX Packages
+name: Compile PhyrePanel PHP Packages
 
 on:
   push:
@@ -20,11 +20,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Compile NGINX
+    - name: Compile PHP
       run: |
-        cd compilators/debian/nginx
-        chmod 775 ./nginx-compile.sh
-        ./nginx-compile.sh
+        cd compilators/debian/php
+        chmod 775 ./php-compile.sh
+        ./php-compile.sh
         ls
 
     - uses: stefanzweifel/git-auto-commit-action@v5
@@ -33,7 +33,7 @@ jobs:
         commit_user_email: bobicloudvision@gmail.com
         commit_author: Cloud Vision Bot <bobicloudvision@gmail.com>
         commit_message: Upload compiled packages [BOT]
-        repository: ./compilators/debian/nginx/dist
+        repository: ./compilators/debian/php/dist
         #skip_checkout: true
         #push_options: '--force'
         #skip_fetch: true
