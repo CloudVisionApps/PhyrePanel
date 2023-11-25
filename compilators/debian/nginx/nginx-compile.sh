@@ -30,6 +30,9 @@ sudo mv /usr/local/phyre/nginx $PACKAGE_MAIN_DIR/usr/local/phyre
 # Rename nginx to alpha-nginx
 sudo mv $PACKAGE_MAIN_DIR/usr/local/phyre/nginx/sbin/nginx $PACKAGE_MAIN_DIR/usr/local/phyre/nginx/sbin/phyre-nginx
 
+# Copy nginx configuration files
+sudo cp $MAIN_DIR/nginx.conf $PACKAGE_MAIN_DIR/usr/local/phyre/nginx/conf/nginx.conf
+
 # Copy debian package META file
 sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
 sudo cp $MAIN_DIR/postinst $PACKAGE_MAIN_DIR/DEBIAN

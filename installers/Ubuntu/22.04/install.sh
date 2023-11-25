@@ -119,9 +119,9 @@ php8.2 -r "unlink('composer-setup.php');"
 COMPOSER_ALLOW_SUPERUSER=1 php8.2 composer.phar install --no-dev --optimize-autoloader --no-interaction
 
 # Create database
-PANEL_DB_NAME="PhyrePanel_db"
-PANEL_DB_USER="PhyrePanel_user"
-PANEL_DB_PASSWORD="PhyrePanel_password"
+PANEL_DB_NAME="phyredb"
+PANEL_DB_USER="phyreuser"
+PANEL_DB_PASSWORD="phyrepass"
 create_mysql_db_and_user $PANEL_DB_NAME $PANEL_DB_USER $PANEL_DB_PASSWORD
 
 # Configure the application

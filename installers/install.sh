@@ -47,6 +47,6 @@ if [[ "$INSTALLER_CONTENT" =~ 404\ Not\ Found ]]; then
     exit 1
 fi
 
-wget $INSTALLER_URL -O ./panel-installer.sh
-chmod +x ./panel-installer.sh
-bash ./panel-installer.sh
+wget $INSTALLER_URL -O ./phyre-installer.sh
+chmod +x ./phyre-installer.sh
+bash ./phyre-installer.sh
