@@ -6,5 +6,4 @@ Section: web
 Maintainer: Cloud Vision Ltd.
 Homepage: https://www.cloudvision.bg
 Architecture: amd64
-Depends: nginx
-Description: Nginx web server
+Description: AlphaX Nginx Web Server
