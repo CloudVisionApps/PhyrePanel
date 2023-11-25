@@ -4,7 +4,8 @@ MAIN_DIR=$(pwd)
 
 # Install dependencies
 sudo apt-get update -y
-sudo apt-get install build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev -y
+sudo apt-get install -y build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
+
 
 #Download nginx source
 wget http://nginx.org/download/nginx-1.24.0.tar.gz
