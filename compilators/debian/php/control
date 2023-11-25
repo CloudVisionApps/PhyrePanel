@@ -6,4 +6,6 @@ Section: web
 Maintainer: CloudVision Ltd.
 Homepage: https://www.phyrepanel.com
 Architecture: amd64
+Depends: libzip4, unzip, libonig5 | libonig4 | libonig2
+Conflct: libzip5
 Description: Phyre Panel PHP SDK
