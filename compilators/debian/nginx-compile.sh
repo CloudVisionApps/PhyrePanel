@@ -27,5 +27,8 @@ sudo cp $MAIN_DIR/control DEBIAN
 cd ../
 sudo dpkg-deb --build alphax-nginx
 sudo mv alphax-nginx.deb $MAIN_DIR/dist
+sudo dpkg --info alpahx-nginx.deb
+sudo dpkg --contents alpahx-nginx.deb
+
 cd $MAIN_DIR
 ls
