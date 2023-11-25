@@ -25,6 +25,9 @@ sudo mkdir usr/local/alphax
 sudo mv /usr/local/alphax/nginx/sbin/nginx /usr/local/alphax/nginx/sbin/alpha-nginx
 sudo mv /usr/local/alphax/nginx usr/local/alphax
 sudo cp $MAIN_DIR/control DEBIAN
+
+#sudo chmod +x /etc/init.d/alphax
+
 cd ../
 
 sudo dpkg-deb --build alphax-nginx-1.20.0
