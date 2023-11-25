@@ -1,0 +1,64 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:       alphax
+#                 internal nginx
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the hestia control panel
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NGINX_DAEMON=/usr/local/alphax/nginx/sbin/alphax-nginx
+NGINX_NAME=alphax-nginx
+NGINX_DESC=alphax-nginx
+NGINX_PID=/run/alphax-nginx.pid
+NGINX_CONF=/usr/local/alphax/nginx/conf/nginx.conf
+
+set -e
+
+start_nginx() {
+	start-stop-daemon --start --quiet --pidfile $NGINX_PID \
+		--retry 5 --exec $NGINX_DAEMON --oknodo
+}
+
+stop_nginx() {
+	start-stop-daemon --stop --quiet --pidfile $NGINX_PID \
+		--retry 5 --oknodo --exec $NGINX_DAEMON
+}
+
+case "$1" in
+	start)
+		log_daemon_msg "Starting $NGINX_DESC" "$NGINX_NAME"
+		start_nginx
+		log_end_msg $?
+		;;
+
+	stop)
+		log_daemon_msg "Stopping $NGINX_DESC" "$NGINX_NAME"
+		stop_nginx
+		log_end_msg $?
+		;;
+
+	restart | force-reload | reload | configtest | testconfig)
+		log_daemon_msg "Restarting $NGINX_DESC" "$NGINX_NAME"
+		stop_nginx
+		sleep 1
+		start_nginx
+		log_end_msg $?
+		;;
+
+	status)
+		status_of_proc -p $NGINX_PID "$NGINX_DAEMON" alphax-nginx
+		;;
+
+	*)
+		echo "Usage: alphax {start|stop|restart|status}" >&2
+		exit 1
+		;;
+esac
+
+exit 0
