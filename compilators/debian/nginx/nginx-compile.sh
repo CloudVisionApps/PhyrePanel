@@ -35,6 +35,10 @@ sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
 sudo cp $MAIN_DIR/postinst $PACKAGE_MAIN_DIR/DEBIAN
 sudo cp $MAIN_DIR/postrm $PACKAGE_MAIN_DIR/DEBIAN
 
+# Set debian package post files permissions
+chmod +x $PACKAGE_MAIN_DIR/DEBIAN/postinst
+chmod +x $PACKAGE_MAIN_DIR/DEBIAN/postrm
+
 # Copy ALPHAX series files
 sudo cp $MAIN_DIR/alphax $PACKAGE_MAIN_DIR/etc/init.d/alphax
 sudo chmod +x $PACKAGE_MAIN_DIR/etc/init.d/alphax
