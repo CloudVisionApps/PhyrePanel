@@ -29,7 +29,6 @@ jobs:
         commit_user_name: Cloud Vision Bot
         commit_user_email: bobicloudvision@gmail.com
         commit_author: Cloud Vision Bot <bobicloudvision@gmail.com>
-
         commit_message: Upload compiled packages
         repository: ./compilators/debian/dist
         skip_checkout: true
