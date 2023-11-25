@@ -18,25 +18,28 @@ sudo make install
 sudo mkdir $MAIN_DIR/alphax-nginx-1.20.0
 PACKAGE_MAIN_DIR=$MAIN_DIR/alphax-nginx-1.20.0
 
-sudo mkdir $PACKAGE_MAIN_DIR/DEBIAN
-sudo mkdir $PACKAGE_MAIN_DIR/usr
-sudo mkdir $PACKAGE_MAIN_DIR/usr/local
-sudo mkdir $PACKAGE_MAIN_DIR/usr/local/alphax
-sudo mkdir $PACKAGE_MAIN_DIR/etc/init.d
+sudo mkdir -p $PACKAGE_MAIN_DIR/DEBIAN
+sudo mkdir -p $PACKAGE_MAIN_DIR/usr/local/alphax
+sudo mkdir -p $PACKAGE_MAIN_DIR/etc/init.d
 
 sudo mv /usr/local/alphax/nginx $PACKAGE_MAIN_DIR/usr/local/alphax
 
+# Rename nginx to alpha-nginx
 sudo mv $PACKAGE_MAIN_DIR/usr/local/alphax/nginx/sbin/nginx $PACKAGE_MAIN_DIR/usr/local/alphax/nginx/sbin/alpha-nginx
-sudo cp $PACKAGE_MAIN_DIR/control DEBIAN
 
+# Copy debian package META file
+sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
+
+# Copy ALPHAX series files
 sudo cp $MAIN_DIR/alphax $PACKAGE_MAIN_DIR/etc/init.d/alphax
 sudo chmod +x $PACKAGE_MAIN_DIR/etc/init.d/alphax
 
-sudo dpkg-deb --build $PACKAGE_MAIN_DIR/alphax-nginx-1.20.0
+
+sudo dpkg-deb --build $PACKAGE_MAIN_DIR
 sudo dpkg --info $PACKAGE_MAIN_DIR/alphax-nginx-1.20.0.deb
 sudo dpkg --contents $PACKAGE_MAIN_DIR/alphax-nginx-1.20.0.deb
 
-sudo mv $PACKAGE_MAIN_DIR/alphax-nginx-1.20.0.deb $MAIN_DIR/dist
+sudo mv $MAIN_DIR/alphax-nginx-1.20.0.deb $MAIN_DIR/dist
 
 cd $MAIN_DIR
 ls
