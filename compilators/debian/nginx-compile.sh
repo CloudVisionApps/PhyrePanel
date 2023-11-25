@@ -15,8 +15,8 @@ sudo ./configure --prefix=/usr/local/alphax/nginx
 sudo make
 sudo make install
 
-sudo mkdir alphax-nginx
-cd alphax-nginx
+sudo mkdir alphax-nginx-1.20.0
+cd alphax-nginx-1.20.0
 sudo mkdir DEBIAN
 sudo mkdir usr
 sudo mkdir usr/local
@@ -27,12 +27,11 @@ sudo mv /usr/local/alphax/nginx usr/local/alphax
 sudo cp $MAIN_DIR/control DEBIAN
 cd ../
 
-sudo dpkg-deb --build alphax-nginx
-sudo dpkg --info alphax-nginx.deb
-sudo dpkg --contents alphax-nginx.deb
+sudo dpkg-deb --build alphax-nginx-1.20.0
+sudo dpkg --info alphax-nginx-1.20.0.deb
+sudo dpkg --contents alphax-nginx-1.20.0.deb
 
-sudo mv alphax-nginx.deb $MAIN_DIR/dist
-
+sudo mv alphax-nginx-1.20.0.deb $MAIN_DIR/dist
 
 cd $MAIN_DIR
 ls
