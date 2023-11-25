@@ -19,9 +19,9 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-openssl \
 				--with-mysqli \
 				--with-gettext \
-				--with-curl \
-				--with-zip \
-				--enable-mbstring
+				#--with-curl \
+				#--with-zip \
+				#--enable-mbstring
 
 # Compile PHP
 sudo make
