@@ -32,23 +32,23 @@ stop_nginx() {
 
 case "$1" in
 	start)
-		log_daemon_msg "Starting $NGINX_DESC" "$NGINX_NAME"
+
 		start_nginx
-		log_end_msg $?
+
 		;;
 
 	stop)
-		log_daemon_msg "Stopping $NGINX_DESC" "$NGINX_NAME"
+
 		stop_nginx
-		log_end_msg $?
+
 		;;
 
 	restart | force-reload | reload | configtest | testconfig)
-		log_daemon_msg "Restarting $NGINX_DESC" "$NGINX_NAME"
+
 		stop_nginx
 		sleep 1
 		start_nginx
-		log_end_msg $?
+
 		;;
 
 	status)
