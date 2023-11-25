@@ -43,19 +43,6 @@ DEPENDENCIES_LIST=(
     "apt-transport-https"
     "software-properties-common"
     "supervisor"
-    "php8.2"
-    "php8.2-fpm"
-    "php8.2-cli"
-    "php8.2-json"
-    "php8.2-mysql"
-    "php8.2-zip"
-    "php8.2-gd"
-    "php8.2-mbstring"
-    "php8.2-curl"
-    "php8.2-xml"
-    "php8.2-intl"
-    "php8.2-pear"
-    "php8.2-bcmath"
 )
 # Check if the dependencies are installed
 for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
@@ -81,6 +68,11 @@ done
 #    fi
 #done
 
+# Install PHYRE NGINX
+sudo dpkg -i $MAIN_DIR/compilators/debian/nginx/dist/phyre-nginx-1.24.0.deb
+
+# Install PHYRE PHP
+sudo dpkg -i $MAIN_DIR/compilators/debian/php/dist/phyre-php-8.2.0.deb
 
 # sudo ufw allow proto tcp from any to any port 80,443
 
@@ -92,17 +84,10 @@ systemctl enable nginx
 rm -rf /var/www/html/*
 cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
 
-# Add NGINX config
-cp $MAIN_DIR/configurations/ubuntu/nginx/panel.conf /etc/nginx/sites-available/PhyrePanel.conf
-
-# Create a symbolic link
-if [ -f /etc/nginx/sites-enabled/PhyrePanel.conf ]; then
-    rm -rf /etc/nginx/sites-enabled/PhyrePanel.conf
-fi
-ln -s /etc/nginx/sites-available/PhyrePanel.conf /etc/nginx/sites-enabled/PhyrePanel.conf
-
 # Restart NGINX
 systemctl restart nginx
+
+PHYRE_PHP="/usr/local/phyre/php/bin/php"
 
 mkdir -p /usr/local/phyre/web
 cp -r $MAIN_DIR/web/* /usr/local/phyre/web
@@ -111,12 +96,12 @@ cp $MAIN_DIR/web/.env.example /usr/local/phyre/web/.env.example
 # Install Composer
 cd /usr/local/phyre/web
 
-php8.2 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php8.2 -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php8.2 composer-setup.php
-php8.2 -r "unlink('composer-setup.php');"
+$PHYRE_PHP -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+$PHYRE_PHP -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+$PHYRE_PHP composer-setup.php
+$PHYRE_PHP -r "unlink('composer-setup.php');"
 
-COMPOSER_ALLOW_SUPERUSER=1 php8.2 composer.phar install --no-dev --optimize-autoloader --no-interaction
+COMPOSER_ALLOW_SUPERUSER=1 $PHYRE_PHP composer.phar install --no-dev --optimize-autoloader --no-interaction
 
 # Create database
 PANEL_DB_NAME="phyredb"
@@ -133,11 +118,9 @@ sed -i "s/^DB_USERNAME=.*/DB_USERNAME=$PANEL_DB_USER/" .env
 sed -i "s/^DB_PASSWORD=.*/DB_PASSWORD=$PANEL_DB_PASSWORD/" .env
 sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=mysql/" .env
 
-php8.2 artisan key:generate
-php8.2 artisan migrate
-php8.2 artisan db:seed
+$PHYRE_PHP artisan key:generate
+$PHYRE_PHP artisan migrate
+$PHYRE_PHP artisan db:seed
 
 sudo chmod -R o+w /usr/local/phyre/web/storage/
 sudo chmod -R o+w /usr/local/phyre/web/bootstrap/cache/
-
-#systemctl status php8.2-fpm.service
