@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" != "configure" ]; then
+	exit 0
+fi
+
+# Touch and set permisions on default log files on installation
+update-rc.d alphax defaults > /dev/null
+invoke-rc.d alphax start || true

@@ -32,6 +32,8 @@ sudo mv $PACKAGE_MAIN_DIR/usr/local/alphax/nginx/sbin/nginx $PACKAGE_MAIN_DIR/us
 
 # Copy debian package META file
 sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
+sudo cp $MAIN_DIR/postinst $PACKAGE_MAIN_DIR/DEBIAN
+sudo cp $MAIN_DIR/postrm $PACKAGE_MAIN_DIR/DEBIAN
 
 # Copy ALPHAX series files
 sudo cp $MAIN_DIR/alphax $PACKAGE_MAIN_DIR/etc/init.d/alphax
