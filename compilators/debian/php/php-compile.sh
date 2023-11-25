@@ -14,11 +14,11 @@ cd php-8.2.0
 # Configure PHP
 
 sudo ./configure --prefix=/usr/local/phyre/php \
-        --with-libdir=lib/$(arch)-linux-gnu \
-				--enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
-				--with-openssl \
-				--with-mysqli \
-				--with-gettext \
+    --enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
+#        --with-libdir=lib/$(arch)-linux-gnu \
+#				--with-openssl \
+#				--with-mysqli \
+#				--with-gettext \
 				#--with-curl \
 				#--with-zip \
 				#--enable-mbstring
@@ -32,6 +32,7 @@ sudo mkdir $PACKAGE_MAIN_DIR
 
 # Create debian package directories
 sudo mkdir -p $PACKAGE_MAIN_DIR/DEBIAN
+sudo mkdir -p $PACKAGE_MAIN_DIR/usr/local/phyre
 
 # Copy php compiled files
 sudo mv /usr/local/phyre/php $PACKAGE_MAIN_DIR/usr/local/phyre
