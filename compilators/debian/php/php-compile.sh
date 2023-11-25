@@ -15,13 +15,13 @@ cd php-8.2.0
 
 sudo ./configure --prefix=/usr/local/phyre/php \
     --enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
-#        --with-libdir=lib/$(arch)-linux-gnu \
-#				--with-openssl \
-#				--with-mysqli \
-#				--with-gettext \
-				#--with-curl \
-				#--with-zip \
+				--with-openssl \
+				--with-mysqli \
+				--with-gettext \
+				--with-curl \
+				--with-zip 
 				#--enable-mbstring
+				#        --with-libdir=lib/$(arch)-linux-gnu \
 
 # Compile PHP
 sudo make

@@ -1,7 +1,9 @@
 name: Compile Phyre PHP Package
 
 on:
-  release:
+  push:
+    branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
 
 permissions:

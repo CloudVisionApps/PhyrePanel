@@ -87,7 +87,7 @@ cp $MAIN_DIR/samples/sample-index.html /var/www/html/index.html
 # Restart NGINX
 systemctl restart nginx
 
-PHYRE_PHP="/usr/local/phyre/php/bin/php"
+PHYRE_PHP=/usr/local/phyre/php/bin/php
 
 mkdir -p /usr/local/phyre/web
 cp -r $MAIN_DIR/web/* /usr/local/phyre/web
@@ -96,12 +96,16 @@ cp $MAIN_DIR/web/.env.example /usr/local/phyre/web/.env.example
 # Install Composer
 cd /usr/local/phyre/web
 
+$PHYRE_PHP -v
 $PHYRE_PHP -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 $PHYRE_PHP -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-$PHYRE_PHP composer-setup.php
+$PHYRE_PHP ./composer-setup.php
 $PHYRE_PHP -r "unlink('composer-setup.php');"
 
-COMPOSER_ALLOW_SUPERUSER=1 $PHYRE_PHP composer.phar install --no-dev --optimize-autoloader --no-interaction
+COMPOSER_ALLOW_SUPERUSER=1 $PHYRE_PHP ./composer.phar install --no-dev --optimize-autoloader --no-interaction
+
+ls
+exit
 
 # Create database
 PANEL_DB_NAME="phyredb"
