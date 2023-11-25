@@ -22,7 +22,7 @@ jobs:
 
     - name: Compile NGINX
       run: |
-        cd compilators/debian
+        cd compilators/debian/nginx
         chmod 775 ./nginx-compile.sh
         ./nginx-compile.sh
         ls
@@ -33,7 +33,7 @@ jobs:
         commit_user_email: bobicloudvision@gmail.com
         commit_author: Cloud Vision Bot <bobicloudvision@gmail.com>
         commit_message: Upload compiled packages [BOT]
-        repository: ./compilators/debian/dist
+        repository: ./compilators/debian/nginx/dist
         #skip_checkout: true
         #push_options: '--force'
         #skip_fetch: true
