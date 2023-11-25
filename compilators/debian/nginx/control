@@ -3,7 +3,7 @@ Package: phyre-nginx
 Priority: optional
 Version: 1.22.0
 Section: web
-Maintainer: Cloud Vision Ltd.
-Homepage: https://www.cloudvision.bg
+Maintainer: CloudVision Ltd.
+Homepage: https://www.phyrepanel.com
 Architecture: amd64
-Description: AlphaX Nginx Web Server
+Description: Phyre Panel Nginx Web Server
