@@ -1,16 +1,4 @@
 <?php
-
-
-
-var_dump(exec('ls -la'));
-
-//var_dump(file_put_contents('/etc/nginx/sites-available/test-site.conf', 1));
-
-
-die();
-
-
-
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
