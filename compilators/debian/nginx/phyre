@@ -8,7 +8,7 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: starts the phyre control panel
-# Description:       starts nginx using start-stop-daemon
+# Description:       starts nginx & php-fpm using start-stop-daemon
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -17,6 +17,12 @@ NGINX_NAME=phyre-nginx
 NGINX_DESC=phyre-nginx
 NGINX_PID=/run/phyre-nginx.pid
 NGINX_CONF=/usr/local/phyre/nginx/conf/nginx.conf
+
+PHP_DAEMON=/usr/local/phyre/php/sbin/phyre-php
+PHP_NAME=phyre-php
+PHP_DESC=phyre-php
+PHP_PID=/run/phyre-php.pid
+PHP_CONF=/usr/local/phyre/php/etc/php-fpm.conf
 
 set -e
 
@@ -30,29 +36,44 @@ stop_nginx() {
 		--retry 5 --oknodo --exec $NGINX_DAEMON
 }
 
+start_php() {
+	start-stop-daemon --start --quiet --pidfile $PHP_PID \
+		--retry 5 --exec $PHP_DAEMON --oknodo
+}
+
+stop_php() {
+	start-stop-daemon --stop --quiet --pidfile $PHP_PID \
+		--retry 5 --oknodo --exec $PHP_DAEMON
+}
+
 case "$1" in
 	start)
 
 		start_nginx
+		start_php
 
 		;;
 
 	stop)
 
 		stop_nginx
+		stop_php
 
 		;;
 
 	restart | force-reload | reload | configtest | testconfig)
 
 		stop_nginx
+		stop_php
 		sleep 1
 		start_nginx
+		start_php
 
 		;;
 
 	status)
 		status_of_proc -p $NGINX_PID "$NGINX_DAEMON" phyre-nginx
+		status_of_proc -p $PHP_PID "$PHP_DAEMON" phyre-php
 		;;
 
 	*)
