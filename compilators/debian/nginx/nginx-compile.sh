@@ -21,11 +21,13 @@ sudo mkdir DEBIAN
 sudo mkdir usr
 sudo mkdir usr/local
 sudo mkdir usr/local/alphax
+sudo mkdir /etc/init.d
 
 sudo mv /usr/local/alphax/nginx/sbin/nginx /usr/local/alphax/nginx/sbin/alpha-nginx
 sudo mv /usr/local/alphax/nginx usr/local/alphax
 sudo cp $MAIN_DIR/control DEBIAN
-sudo cp etc/init.d/alphax alphax
+
+sudo cp /etc/init.d/alphax alphax
 sudo chmod +x /etc/init.d/alphax
 ls
 
