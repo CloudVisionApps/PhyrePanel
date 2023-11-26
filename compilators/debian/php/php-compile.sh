@@ -10,6 +10,7 @@ sudo apt install \
  autoconf \
  re2c \
  bison \
+ sqlite3 \
  libsqlite3-dev \
  libpq-dev \
  libonig-dev \
@@ -27,13 +28,22 @@ sudo apt install \
  libxslt1-dev \
  libpspell-dev \
  libzip-dev \
+ libicu-dev \
+ libldap2-dev \
+ libxslt-dev \
+ libssl-dev \
+ libldb-dev \
  libgccjit-10-dev \
  binutils \
- autoconf \
  libtool \
  bison \
  re2c \
+ pkg-config \
+ zlib1g-dev \
+ libargon2-dev \
+ libsodium-dev \
  make \
+ autoconf\
  automake
 
 # Download PHP source
@@ -49,12 +59,12 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-mysqli \
 				--with-gettext \
 				--with-curl \
-				--with-zip
-			#	--enable-mbstring
+				--with-zip \
+				--enable-mbstring
 #        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
-sudo make -j 4
+sudo make -jN
 sudo make install
 
 PACKAGE_MAIN_DIR=$MAIN_DIR/phyre-php-8.2.0
