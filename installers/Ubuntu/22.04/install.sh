@@ -104,9 +104,6 @@ $PHYRE_PHP -r "unlink('composer-setup.php');"
 
 COMPOSER_ALLOW_SUPERUSER=1 $PHYRE_PHP ./composer.phar install --no-dev --optimize-autoloader --no-interaction
 
-ls
-exit
-
 # Create database
 PANEL_DB_NAME="phyredb"
 PANEL_DB_USER="phyreuser"
