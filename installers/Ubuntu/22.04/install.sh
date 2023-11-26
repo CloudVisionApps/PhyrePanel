@@ -5,8 +5,8 @@ apt-get update && apt-get install ca-certificates
 
 apt install -y git
 cd /
-mkdir -p /phyre/raw-repo
-git clone https://github.com/CloudVisionApps/PhyrePanel.git /phyre/raw-repo
+mkdir -p $MAIN_DIR
+git clone https://github.com/CloudVisionApps/PhyrePanel.git $MAIN_DIR
 
 HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
@@ -25,12 +25,9 @@ email="admin@phyrepanel.com"
 echo phyreweb:$random_password | sudo chpasswd -e
 
 mkdir -p /etc/sudoers.d
-cp -f ./sudo/phyreweb /etc/sudoers.d/
+cp -f $MAIN_DIR/installers/Ubuntu/22.04/sudo/phyreweb /etc/sudoers.d/
 chmod 440 /etc/sudoers.d/phyreweb
 
-
-
-exit
 
 # Update the system
 apt update -y
