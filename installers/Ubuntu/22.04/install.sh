@@ -98,8 +98,6 @@ for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
     fi
 done
 
-exit
-
 #DEPENDENCIES_FOR_REMOVE_LIST=(
 #    "apache2"
 #)
