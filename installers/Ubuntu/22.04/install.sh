@@ -12,6 +12,9 @@ HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 . $HELPERS_DIR"/create-mysql-db-and-user.sh"
 
+INSTALLATION_HELPERS_DIR=$MAIN_DIR"/installers/helpers/ubuntu"
+$INSTALLATION_HELPERS_DIR"/create-web-user.sh"
+
 # Update the system
 apt update -y
 
