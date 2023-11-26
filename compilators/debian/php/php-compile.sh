@@ -2,18 +2,21 @@
 
 MAIN_DIR=$(pwd)
 
+sudo apt-get update -y && sudo apt-get upgrade -y
+
 # Build Essentials
 sudo apt-get install build-essential
+sudo apt-get install libsodium-dev
+sudo apt-install libonig-dev
 
 # Install Dependencies
-sudo apt install \
+sudo apt-get install \
  autoconf \
  re2c \
  bison \
  sqlite3 \
  libsqlite3-dev \
  libpq-dev \
- libonig-dev \
  libfcgi-dev \
  libfcgi0ldbl \
  libjpeg-dev \
@@ -41,10 +44,10 @@ sudo apt install \
  pkg-config \
  zlib1g-dev \
  libargon2-dev \
- libsodium-dev \
  make \
  autoconf\
  automake
+sudo apt-get update -y
 
 # Download PHP source
 wget http://de2.php.net/distributions/php-8.2.0.tar.gz
