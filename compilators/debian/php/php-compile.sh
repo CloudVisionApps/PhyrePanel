@@ -57,14 +57,16 @@ cd php-8.2.0
 # Configure PHP
 
 sudo ./configure --prefix=/usr/local/phyre/php \
-    --enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
+        --enable-fpm \
+        --with-fpm-user=admin \
+        --with-fpm-group=admin \
 				--with-openssl \
 				--with-mysqli \
 				--with-gettext \
 				--with-curl \
 				--with-zip \
-				--enable-mbstring
-#        --with-libdir=lib/$(arch)-linux-gnu
+				--enable-mbstring \ 
+        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
 sudo make -j 4
