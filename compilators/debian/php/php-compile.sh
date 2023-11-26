@@ -57,6 +57,7 @@ cd php-8.2.0
 # Configure PHP
 sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 
+sudo ./buildconf
 sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-fpm \
         --with-fpm-user=admin \
