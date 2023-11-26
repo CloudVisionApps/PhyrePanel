@@ -67,6 +67,12 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-gettext \
 				--with-curl \
 				--with-zip \
+				--with-zlib \
+				--with-gd \
+				--with-jpeg \
+				--with-freetype \
+				--with-xsl \
+				--with-intl \
 				--enable-mbstring \
         --with-libdir=lib/$(arch)-linux-gnu
 
