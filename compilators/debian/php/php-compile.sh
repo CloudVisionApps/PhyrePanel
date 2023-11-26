@@ -85,53 +85,66 @@ cd php-8.2.0
 sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 
 ./buildconf --force
-sudo ./configure --prefix=/usr/local/phyre/php \
-        --enable-fpm \
-        --with-fpm-user=admin \
-        --with-fpm-group=admin \
-        --enable-phpdbg \
-        --enable-fpm \
-        --with-pdo-mysql=mysqlnd \
-        --with-mysqli=mysqlnd \
-        --with-pgsql \
-        --with-pdo-pgsql \
-        --with-pdo-sqlite \
-        --enable-intl \
-        --without-pear \
-        --enable-gd \
-        --with-jpeg \
-        --with-webp \
-        --with-freetype \
-        --with-xpm \
-        --enable-exif \
-        --with-zip \
-        --with-zlib \
-        --enable-soap \
-        --enable-xmlreader \
-        --with-xsl \
-        --with-tidy \
-        --enable-sysvsem \
-        --enable-sysvshm \
-        --enable-shmop \
-        --enable-pcntl \
-        --with-readline \
-        --enable-mbstring \
-        --with-curl \
-        --with-gettext \
-        --enable-sockets \
-        --with-bz2 \
-        --with-openssl \
-        --with-gmp \
-        --enable-bcmath \
-        --enable-calendar \
-        --enable-ftp \
-        --enable-sysvmsg \
-        --with-sodium \
-        --enable-zend-test=shared \
-        --enable-dl-test=shared \
-        --enable-werror \
-        --with-pear \
-        --with-libdir=lib/$(arch)-linux-gnu
+./configure --prefix=/usr/local/phyre/php \
+				--with-libdir=lib/$(arch)-linux-gnu \
+				--enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
+				--with-openssl \
+				--with-mysqli \
+				--with-gettext \
+				--with-curl \
+				--enable-intl \
+				--with-zip \
+				--with-gmp \
+				--enable-mbstring
+
+#sudo ./configure --prefix=/usr/local/phyre/php \
+#        --enable-fpm \
+#        --with-fpm-user=admin \
+#        --with-fpm-group=admin \
+#        --enable-phpdbg \
+#        --enable-fpm \
+#        --with-pdo-mysql=mysqlnd \
+#        --with-mysqli=mysqlnd \
+#        --with-pgsql \
+#        --with-pdo-pgsql \
+#        --with-pdo-sqlite \
+#        --enable-intl \
+#        --without-pear \
+#        --enable-gd \
+#        --with-jpeg \
+#        --with-webp \
+#        --with-freetype \
+#        --with-xpm \
+#        --enable-exif \
+#        --with-zip \
+#        --with-zlib \
+#        --enable-soap \
+#        --enable-xmlreader \
+#        --with-xsl \
+#        --with-tidy \
+#        --enable-sysvsem \
+#        --enable-sysvshm \
+#        --enable-shmop \
+#        --enable-pcntl \
+#        --with-readline \
+#        --enable-mbstring \
+#        --with-curl \
+#        --with-gettext \
+#        --enable-sockets \
+#        --with-bz2 \
+#        --with-openssl \
+#        --with-gmp \
+#        --enable-bcmath \
+#        --enable-calendar \
+#        --enable-ftp \
+#        --enable-sysvmsg \
+#        --with-sodium \
+#        --enable-zend-test=shared \
+#        --enable-dl-test=shared \
+#        --enable-werror \
+#        --with-pear \
+#        --with-libdir=lib/$(arch)-linux-gnu
+
 # Compile PHP
 sudo make -j 4
 sudo make test
