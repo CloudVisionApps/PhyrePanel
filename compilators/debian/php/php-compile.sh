@@ -11,7 +11,6 @@ sudo apt-get install -y libonig-dev
 
 # Install Dependencies
 DEPENDENCIES_LIST=(
-  "language-pack-de"
      "re2c"
      "ccache"
      "mysql-server"
@@ -127,7 +126,6 @@ sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-calendar \
         --enable-ftp \
         --enable-sysvmsg \
-        --with-ffi \
         --with-sodium \
         --enable-zend-test=shared \
         --enable-dl-test=shared \
