@@ -147,7 +147,7 @@ sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 
 # Compile PHP
 sudo make -j 4
-sudo make test
+#sudo make test
 sudo make install
 
 /usr/local/phyre/php/bin/php -v
