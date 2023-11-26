@@ -90,6 +90,8 @@ sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 				--enable-fpm --with-fpm-user=admin --with-fpm-group=admin \
 				--with-openssl \
 				--with-mysqli \
+        --with-pdo-mysql=mysqlnd \
+        --with-mysqli=mysqlnd \
 				--with-gettext \
 				--with-curl \
 				--enable-intl \
