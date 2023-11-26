@@ -18,7 +18,7 @@ NGINX_DESC=phyre-nginx
 NGINX_PID=/run/phyre-nginx.pid
 NGINX_CONF=/usr/local/phyre/nginx/conf/nginx.conf
 
-PHP_DAEMON=/usr/local/phyre/php/sbin/phyre-php
+PHP_DAEMON=/usr/local/phyre/php/sbin/phyre-php-fpm
 PHP_NAME=phyre-php
 PHP_DESC=phyre-php
 PHP_PID=/run/phyre-php.pid
