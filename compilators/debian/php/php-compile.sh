@@ -7,7 +7,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 # Build Essentials
 sudo apt-get install build-essential
 sudo apt-get install libsodium-dev
-sudo apt-install libonig-dev
+sudo apt-get install libonig-dev
 
 # Install Dependencies
 sudo apt-get install \
