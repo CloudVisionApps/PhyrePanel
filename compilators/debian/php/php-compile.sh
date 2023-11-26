@@ -99,7 +99,6 @@ sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-calendar \
         --enable-ftp \
         --with-enchant=/usr \
-        --with-kerberos \
         --enable-sysvmsg \
         --with-ffi \
         --with-sodium \
