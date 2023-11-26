@@ -162,6 +162,7 @@ sudo mkdir -p $PACKAGE_MAIN_DIR/usr/local/phyre
 # Copy php compiled files
 sudo mv /usr/local/phyre/php $PACKAGE_MAIN_DIR/usr/local/phyre
 sudo cp $MAIN_DIR/php-fpm.conf $PACKAGE_MAIN_DIR/usr/local/phyre/php/etc
+sudo mv $PACKAGE_MAIN_DIR/usr/local/phyre/php/sbin/php-fpm $PACKAGE_MAIN_DIR/usr/local/phyre/php/sbin/phyre-php-fpm
 
 # Copy debian package META file
 sudo cp $MAIN_DIR/control $PACKAGE_MAIN_DIR/DEBIAN
