@@ -64,9 +64,6 @@ DEPENDENCIES_LIST=(
     "libzip-dev"
     "libcurl4-openssl-dev"
     "libssl-dev"
-    "libldb-dev"
-    "libgccjit-10-dev"
-    "libargon2-dev"
     "zlib1g-dev"
     "php8.2"
     "php8.2-fpm"
@@ -88,11 +85,7 @@ DEPENDENCIES_LIST=(
     "php8.2-xmlrpc"
     "php8.2-soap"
     "php8.2-yaml"
-    "php8.2-dev"
     "php8.2-sqlite3"
-    "php8.2-swoole"
-    "php8.2-ast"
-    "php8.2-geoip"
 )
 # Check if the dependencies are installed
 for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
@@ -104,6 +97,8 @@ for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
         echo "Dependency $DEPENDENCY is installed."
     fi
 done
+
+exit
 
 #DEPENDENCIES_FOR_REMOVE_LIST=(
 #    "apache2"
