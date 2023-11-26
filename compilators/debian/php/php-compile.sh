@@ -4,7 +4,12 @@ MAIN_DIR=$(pwd)
 
 # Install dependencies
 sudo apt-get update -y
-sudo apt-get install -y libzip-dev libonig-dev openssl zip unzip git ibgmp-dev gmp-dev libsqlite3-dev libxml2-dev pkg-config build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
+sudo apt-get install -y zip unzip git ibgmp-dev gmp-dev pkg-config build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
+sudo apt-get install -y libonig-dev
+sudo apt-get install -y libzip-dev
+sudo apt-get install -y openssl
+sudo apt-get install -y libsqlite3-dev
+sudo apt-get install -y libxml2-dev
 sudo apt-get install -y libcurl4-openssl-dev
 
 # Download PHP source
