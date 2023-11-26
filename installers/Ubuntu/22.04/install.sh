@@ -122,6 +122,7 @@ sudo dpkg -i $MAIN_DIR/compilators/debian/php/dist/phyre-php-8.2.0.deb
 # Run Nginx
 systemctl start nginx
 systemctl enable nginx
+service phyre start
 
 # Change NGINX index.html
 rm -rf /var/www/html/*
