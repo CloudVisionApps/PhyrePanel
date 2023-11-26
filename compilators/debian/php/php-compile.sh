@@ -37,13 +37,13 @@ sudo apt-get install -y \
  libssl-dev \
  libldb-dev \
  libgccjit-10-dev \
+ libargon2-dev \
+ zlib1g-dev \
  binutils \
  libtool \
  bison \
  re2c \
  pkg-config \
- zlib1g-dev \
- libargon2-dev \
  make \
  autoconf\
  automake
