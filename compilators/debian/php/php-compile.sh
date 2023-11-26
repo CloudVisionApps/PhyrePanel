@@ -92,6 +92,7 @@ sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 				--with-mysqli \
         --with-pdo-mysql=mysqlnd \
         --with-mysqli=mysqlnd \
+		    --with-pdo-sqlite \
 				--with-gettext \
 				--with-curl \
 				--enable-intl \
