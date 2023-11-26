@@ -5,12 +5,12 @@ MAIN_DIR=$(pwd)
 sudo apt-get update -y && sudo apt-get upgrade -y
 
 # Build Essentials
-sudo apt-get install build-essential
-sudo apt-get install libsodium-dev
-sudo apt-get install libonig-dev
+sudo apt-get install -y build-essential
+sudo apt-get install -y libsodium-dev
+sudo apt-get install -y libonig-dev
 
 # Install Dependencies
-sudo apt-get install \
+sudo apt-get install -y \
  autoconf \
  re2c \
  bison \
@@ -67,7 +67,7 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 #        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
-sudo make -jN
+sudo make -j 4
 sudo make install
 
 PACKAGE_MAIN_DIR=$MAIN_DIR/phyre-php-8.2.0
