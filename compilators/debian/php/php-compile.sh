@@ -2,15 +2,32 @@
 
 MAIN_DIR=$(pwd)
 
-# Install dependencies
-sudo apt-get update -y
-sudo apt-get install -y zip unzip git ibgmp-dev gmp-dev pkg-config build-essential dpkg-dev debhelper autotools-dev libgeoip-dev libssl-dev libpcre3-dev zlib1g-dev
-sudo apt-get install -y libonig-dev
-sudo apt-get install -y libzip-dev
-sudo apt-get install -y openssl
-sudo apt-get install -y libsqlite3-dev
-sudo apt-get install -y libxml2-dev
-sudo apt-get install -y libcurl4-openssl-dev
+# Build Essentials
+sudo apt-get install build-essential
+
+# Install Dependencies
+sudo apt install \
+ autoconf \
+ re2c \
+ bison \
+ libsqlite3-dev \
+ libpq-dev \
+ libonig-dev \
+ libfcgi-dev \
+ libfcgi0ldbl \
+ libjpeg-dev \
+ libpng-dev \
+ libssl-dev \
+ libxml2-dev \
+ libcurl4-openssl-dev \
+ libxpm-dev \
+ libgd-dev \
+ libmysqlclient-dev \
+ libfreetype6-dev \
+ libxslt1-dev \
+ libpspell-dev \
+ libzip-dev \
+ libgccjit-10-dev
 
 # Download PHP source
 wget http://de2.php.net/distributions/php-8.2.0.tar.gz
