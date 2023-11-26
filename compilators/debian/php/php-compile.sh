@@ -10,69 +10,72 @@ sudo apt-get install -y libsodium-dev
 sudo apt-get install -y libonig-dev
 
 # Install Dependencies
-sudo apt-get install -y locales \
-  language-pack-de \
-  re2c \
-  ccache \
-  mysql-server \
-  libbz2-dev \
-  libcurl4-gnutls-dev  \
-  libenchant-dev \
-  libfreetype6-dev \
-  libgmp-dev \
-  libicu-dev \
-  libjpeg-dev \
-  libkrb5-dev \
-  libonig-dev  \
-  libpng-dev \
-  libpq-dev  \
-  libsasl2-dev \
-  libsqlite3-dev \
-  libsodium-dev \
-  libtidy-dev  \
-  libwebp-dev \
-  libxml2-dev   \
-  libxpm-dev \
-  libxslt1-dev \
-  libzip-dev \
-  autoconf \
-  re2c \
-  bison \
-  sqlite3 \
-  libsqlite3-dev \
-  libpq-dev \
-  libfcgi-dev \
-  libfcgi0ldbl \
-  libjpeg-dev \
-  libpng-dev \
-  libssl-dev \
-  libxml2-dev \
-  libcurl4-openssl-dev \
-  libxpm-dev \
-  libgd-dev \
-  libmysqlclient-dev \
-  libfreetype6-dev \
-  libxslt1-dev \
-  libpspell-dev \
-  libzip-dev \
-  libicu-dev \
-  libldap2-dev \
-  libxslt-dev \
-  libssl-dev \
-  libldb-dev \
-  libgccjit-10-dev \
-  libargon2-dev \
-  zlib1g-dev \
-  binutils \
-  libtool \
-  bison \
-  re2c \
-  pkg-config \
-  make \
-  autoconf \
-  automake
-
-sudo apt-get update -y
+DEPENDENCIES_LIST=(
+  "language-pack-de"
+     "re2c"
+     "ccache"
+     "mysql-server"
+     "libbz2-dev"
+     "libcurl4-gnutls-dev"
+     "libenchant-dev"
+     "libfreetype6-dev"
+     "libgmp-dev"
+     "libicu-dev"
+     "libjpeg-dev"
+     "libkrb5-dev"
+     "libonig-dev"
+     "libpng-dev"
+     "libpq-dev"
+     "libsasl2-dev"
+     "libsqlite3-dev"
+     "libsodium-dev"
+     "libtidy-dev"
+     "libwebp-dev"
+     "libxml2-dev"
+     "libxpm-dev"
+     "libxslt1-dev"
+     "libzip-dev"
+     "autoconf"
+     "re2c"
+     "bison"
+     "sqlite3"
+     "libsqlite3-dev"
+     "libpq-dev"
+     "libfcgi-dev"
+     "libfcgi0ldbl"
+     "libjpeg-dev"
+     "libpng-dev"
+     "libssl-dev"
+     "libcurl4-openssl-dev"
+     "libxpm-dev"
+     "libgd-dev"
+     "libmysqlclient-dev"
+     "libfreetype6-dev"
+     "libxslt1-dev"
+     "libpspell-dev"
+     "libzip-dev"
+     "libicu-dev"
+     "libldap2-dev"
+     "libxslt-dev"
+     "libssl-dev"
+     "libldb-dev"
+     "libgccjit-10-dev"
+     "libargon2-dev"
+     "zlib1g-dev"
+     "binutils"
+     "libtool"
+     "bison"
+     "re2c"
+     "pkg-config"
+     "make"
+     "autoconf"
+     "automake"
+)
+# Check if the dependencies are installed
+for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
+    echo "Installing $DEPENDENCY..."
+    sudo apt install -y $DEPENDENCY
+done
 
 # Download PHP source
 wget http://de2.php.net/distributions/php-8.2.0.tar.gz
@@ -133,6 +136,7 @@ sudo ./configure --prefix=/usr/local/phyre/php \
         --with-pear \
         --with-libdir=lib/$(arch)-linux-gnu
 
+exit
 
 # Compile PHP
 sudo make -j 4
