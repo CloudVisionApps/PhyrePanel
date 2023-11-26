@@ -42,8 +42,8 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-mysqli \
 				--with-gettext \
 				--with-curl \
-				--with-zip \
-				--enable-mbstring
+				--with-zip 
+			#	--enable-mbstring
 #        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
