@@ -26,7 +26,7 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-gettext \
 				--with-curl \
 				--with-zip \
-				--enable-mbstring 
+				--enable-mbstring
 #        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
