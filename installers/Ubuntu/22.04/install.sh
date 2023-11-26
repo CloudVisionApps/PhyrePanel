@@ -12,8 +12,25 @@ HELPERS_DIR=$MAIN_DIR"/shell/helpers/ubuntu"
 . $HELPERS_DIR"/common.sh"
 . $HELPERS_DIR"/create-mysql-db-and-user.sh"
 
-INSTALLATION_HELPERS_DIR=$MAIN_DIR"/installers/helpers/ubuntu"
-$INSTALLATION_HELPERS_DIR"/create-web-user.sh"
+
+# Create the new phyreweb user
+
+random_password="$(openssl rand -base64 32)"
+email="admin@phyrepanel.com"
+
+# Create the new phyreweb user
+/usr/sbin/useradd "phyreweb" -c "$email" --no-create-home
+
+# do not allow login into phyreweb user
+echo phyreweb:$random_password | sudo chpasswd -e
+
+mkdir -p /etc/sudoers.d
+cp -f ./sudo/phyreweb /etc/sudoers.d/
+chmod 440 /etc/sudoers.d/phyreweb
+
+
+
+exit
 
 # Update the system
 apt update -y
