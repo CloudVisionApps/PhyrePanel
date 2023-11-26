@@ -69,9 +69,13 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--enable-mbstring \
         --with-libdir=lib/$(arch)-linux-gnu
 
+
 # Compile PHP
 sudo make -j 4
+sudo make test
 sudo make install
+
+/usr/local/phyre/php/bin/php -v
 
 PACKAGE_MAIN_DIR=$MAIN_DIR/phyre-php-8.2.0
 sudo mkdir $PACKAGE_MAIN_DIR
