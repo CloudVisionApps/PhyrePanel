@@ -126,7 +126,6 @@ sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-bcmath \
         --enable-calendar \
         --enable-ftp \
-        --with-enchant=/usr \
         --enable-sysvmsg \
         --with-ffi \
         --with-sodium \
