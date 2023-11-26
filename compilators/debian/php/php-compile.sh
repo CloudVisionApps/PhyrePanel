@@ -55,6 +55,7 @@ tar -zxvf php-8.2.0.tar.gz
 cd php-8.2.0
 
 # Configure PHP
+sudo make LIBDIR=/usr/lib/$(arch)-linux-gnu install
 
 sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-fpm \
@@ -65,7 +66,7 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-gettext \
 				--with-curl \
 				--with-zip \
-				--enable-mbstring \ 
+				--enable-mbstring \
         --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
