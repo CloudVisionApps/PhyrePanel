@@ -27,7 +27,14 @@ sudo apt install \
  libxslt1-dev \
  libpspell-dev \
  libzip-dev \
- libgccjit-10-dev
+ libgccjit-10-dev \
+ binutils \
+ autoconf \
+ libtool \
+ bison \
+ re2c \
+ make \
+ automake
 
 # Download PHP source
 wget http://de2.php.net/distributions/php-8.2.0.tar.gz
@@ -42,12 +49,12 @@ sudo ./configure --prefix=/usr/local/phyre/php \
 				--with-mysqli \
 				--with-gettext \
 				--with-curl \
-				--with-zip 
+				--with-zip
 			#	--enable-mbstring
 #        --with-libdir=lib/$(arch)-linux-gnu
 
 # Compile PHP
-sudo make
+sudo make -j 4
 sudo make install
 
 PACKAGE_MAIN_DIR=$MAIN_DIR/phyre-php-8.2.0
