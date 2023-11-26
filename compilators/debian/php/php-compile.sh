@@ -134,9 +134,6 @@ sudo ./configure --prefix=/usr/local/phyre/php \
         --enable-werror \
         --with-pear \
         --with-libdir=lib/$(arch)-linux-gnu
-
-exit
-
 # Compile PHP
 sudo make -j 4
 sudo make test
