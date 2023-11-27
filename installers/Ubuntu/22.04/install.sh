@@ -138,6 +138,10 @@ mkdir -p /usr/local/phyre/web
 cp -r $MAIN_DIR/web/* /usr/local/phyre/web
 cp $MAIN_DIR/web/.env.example /usr/local/phyre/web/.env.example
 
+mkdir -p /usr/local/phyre/bin
+cp -r $MAIN_DIR/bin/* /usr/local/phyre/bin
+cp -r $MAIN_DIR/samples/* /usr/local/phyre/samples
+
 # Install Composer
 cd /usr/local/phyre/web
 
