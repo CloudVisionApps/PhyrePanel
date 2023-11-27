@@ -29,6 +29,13 @@ class WebsiteResource extends Resource
 
                 Forms\Components\TextInput::make('domain')
                     ->required()
+                    ->disabled(function ($record) {
+                        if (isset($record->exists)) {
+                            return $record->exists;
+                        } else {
+                            return false;
+                        }
+                    })
                     ->suffixIcon('heroicon-m-globe-alt'),
 
                 Forms\Components\TextInput::make('root')

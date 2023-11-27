@@ -23,6 +23,10 @@ sed -i "s/%USER%/${USER}/g" $SITES_AVAILABLE_DIR/$DOMAIN.conf
 SERVER_ROOT_ESCAPED=$(printf '%s\n' "$SERVER_ROOT" | sed -e 's/[\/&]/\\&/g')
 sed -i "s#%SERVER_ROOT%#${SERVER_ROOT_ESCAPED}#g" $SITES_AVAILABLE_DIR/$DOMAIN.conf
 
+cp -f /usr/local/phyre/samples/sample-website-index.html $SERVER_ROOT/index.html
+sed -i "s/%DOMAIN%/${DOMAIN}/g" $SERVER_ROOT/index.html
+
+
 # Reload NGINX
 service nginx reload
 
