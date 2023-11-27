@@ -42,6 +42,7 @@ for REPOSITORY in "${REPOSITORIES_LIST[@]}"; do
 done
 
 DEPENDENCIES_LIST=(
+    "jq"
     "curl"
     "wget"
     "git"

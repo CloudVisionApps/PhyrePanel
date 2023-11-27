@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\ShellApi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sushi\Sushi;
@@ -28,28 +29,24 @@ class Website extends Model
 
         static::creating(function ($model) {
 
-            $args =  escapeshellarg($model->server_name) . ' ' . escapeshellarg('bobi');
-            $args = str_replace(PHP_EOL, '', $args);
-            $command = '/usr/local/phyre/bin/website-create.sh ' . $args;
-            $createWebsite = shell_exec($command);
+            $createWebsite = ShellApi::exec('website-create', [
+               $model->server_name,
+               'bobkata'
+            ]);
+
             if (empty($createWebsite)) {
                 return false;
             }
 
-            dd($createWebsite);
-
         });
 
         static::deleting(function ($model) {
-
-            $args =  escapeshellarg($model->server_name);
-            $args = str_replace(PHP_EOL, '', $args);
-            $command = '/usr/local/phyre/bin/website-delete.sh ' . $args;
-            $deleteWebsite = shell_exec($command);
+            $deleteWebsite = ShellApi::exec('website-delete', [
+                $model->server_name
+            ]);
             if (empty($deleteWebsite)) {
                 return false;
             }
-
         });
     }
 
@@ -60,7 +57,8 @@ class Website extends Model
 
     public function getRows()
     {
-        $websitesList = shell_exec('/usr/local/phyre/bin/websites-list.sh');
+        $websitesList = ShellApi::exec('websites-list');
+
         $rows = [];
         if (!empty($websitesList)) {
             $websitesList = json_decode($websitesList, true);
