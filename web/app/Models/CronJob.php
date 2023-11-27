@@ -35,10 +35,10 @@ class CronJob extends Model
         });
     }
 
-    protected function sushiShouldCache()
-    {
-        return true;
-    }
+//    protected function sushiShouldCache()
+//    {
+//        return true;
+//    }
 
     public function getRows()
     {
