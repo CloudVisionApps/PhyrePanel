@@ -33,6 +33,18 @@ class CronJob extends Model
                 return false;
             }
         });
+
+        static::deleting(function ($model) {
+
+            $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
+            $args = str_replace(PHP_EOL, '', $args);
+            $command = '/usr/local/phyre/bin/delete-cron-job.sh ' . $args;
+            $deleteCron = shell_exec($command);
+            if (empty($deleteCron)) {
+                return false;
+            }
+
+        });
     }
 
 //    protected function sushiShouldCache()
