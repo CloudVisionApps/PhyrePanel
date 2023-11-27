@@ -22,3 +22,7 @@ jobs:
         wget https://raw.githubusercontent.com/CloudVisionApps/PhyrePanel/main/installers/install.sh
         chmod +x install.sh
         sudo ./install.sh
+
+    - name: Run PhyrePanel Tests
+        run: |
+          php8.2 /tests/github-test.php
