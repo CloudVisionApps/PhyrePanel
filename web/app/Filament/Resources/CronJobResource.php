@@ -31,7 +31,16 @@ class CronJobResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('schedule')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('command')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user')
+                    ->searchable()
+                    ->sortable(),
+
             ])
             ->filters([
                 //
