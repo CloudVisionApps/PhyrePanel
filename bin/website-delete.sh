@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Path to NGINX sites-available directory
-sites_available_dir="/etc/nginx/sites-available"
-sites_enabled_dir="/etc/nginx/sites-enabled"
+SITES_AVAILABLE_DIR="/etc/nginx/sites-available"
+SITES_ENABLED_DIR="/etc/nginx/sites-enabled"
 
 # Delete the site
-rm -rf $sites_available_dir/$1
-rm -rf $sites_enabled_dir/$1
+rm -rf $SITES_AVAILABLE_DIR/$1.conf
+rm -rf $SITES_ENABLED_DIR/$1.conf
+rm -rf /var/www/$1
 
 # Reload NGINX
 service nginx reload
