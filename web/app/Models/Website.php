@@ -29,7 +29,7 @@ class Website extends Model
 
         static::creating(function ($model) {
 
-            $createWebsite = ShellApi::exec('website-create', [
+            $createWebsite = ShellApi::callBin('website-create', [
                $model->server_name,
                'bobkata'
             ]);
@@ -41,7 +41,7 @@ class Website extends Model
         });
 
         static::deleting(function ($model) {
-            $deleteWebsite = ShellApi::exec('website-delete', [
+            $deleteWebsite = ShellApi::callBin('website-delete', [
                 $model->server_name
             ]);
             if (empty($deleteWebsite)) {
@@ -57,7 +57,7 @@ class Website extends Model
 
     public function getRows()
     {
-        $websitesList = ShellApi::exec('websites-list');
+        $websitesList = ShellApi::callBin('websites-list');
 
         $rows = [];
         if (!empty($websitesList)) {

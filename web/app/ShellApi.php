@@ -13,6 +13,22 @@ class ShellApi
             }
         }
 
+        $fullCommand = escapeshellarg($command) . $args;
+        $execOutput = shell_exec($fullCommand);
+        $execOutput = str_replace(PHP_EOL, '', $execOutput);
+
+        return $execOutput;
+    }
+
+    public static function callBin($command, $argsArray = [])
+    {
+        $args = '';
+        if (!empty($argsArray)) {
+            foreach ($argsArray as $arg) {
+                $args .= escapeshellarg($arg) . ' ';
+            }
+        }
+
         $fullCommand = escapeshellarg('/usr/local/phyre/bin/' . $command . '.sh') . ' ' . $args;
         $commandAsSudo = '/usr/bin/sudo ' . $fullCommand;
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\ShellApi;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sushi\Sushi;
@@ -27,19 +28,25 @@ class CronJob extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
-            $addCron = shell_exec('/usr/local/phyre/bin/cron-job-add.sh ' . $args);
+
+            $addCron = ShellApi::callBin('cron-job-add', [
+                $model->user,
+                $model->schedule,
+                $model->command,
+            ]);
             if (empty($addCron)) {
                 return false;
             }
+            
         });
 
         static::deleting(function ($model) {
 
-            $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
-            $args = str_replace(PHP_EOL, '', $args);
-            $command = '/usr/local/phyre/bin/cron-job-delete.sh ' . $args;
-            $deleteCron = shell_exec($command);
+            $deleteCron = ShellApi::callBin('cron-job-delete', [
+                $model->user,
+                $model->schedule,
+                $model->command,
+            ]);
             if (empty($deleteCron)) {
                 return false;
             }
@@ -47,15 +54,18 @@ class CronJob extends Model
         });
     }
 
-//    protected function sushiShouldCache()
-//    {
-//        return true;
-//    }
+    protected function sushiShouldCache()
+    {
+        return true;
+    }
 
     public function getRows()
     {
-        $user = shell_exec('whoami');
-        $cronList = shell_exec('/usr/local/phyre/bin/cron-jobs-list.sh ' . $user);
+        $user = ShellApi::exec('whoami');
+
+        $cronList = ShellApi::callBin('cron-jobs-list', [
+            $user
+        ]);
 
         $rows = [];
         if (!empty($cronList)) {
