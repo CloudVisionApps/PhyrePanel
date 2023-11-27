@@ -37,7 +37,7 @@ class CronJob extends Model
             if (empty($addCron)) {
                 return false;
             }
-            
+
         });
 
         static::deleting(function ($model) {
