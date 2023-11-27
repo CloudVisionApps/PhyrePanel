@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DomainResource\Pages;
-use App\Filament\Resources\DomainResource\RelationManagers;
-use App\Models\Domain;
+use App\Filament\Resources\CronJobResource\Pages;
+use App\Filament\Resources\CronJobResource\RelationManagers;
+use App\Models\CronJob;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DomainResource extends Resource
+class CronJobResource extends Resource
 {
-    protected static ?string $model = Domain::class;
+    protected static ?string $model = CronJob::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-globe-europe-africa';
+    protected static ?string $navigationIcon = 'heroicon-o-clock';
 
     public static function form(Form $form): Form
     {
@@ -31,9 +31,7 @@ class DomainResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('label')
-                    ->searchable()
-                    ->sortable()
+                //
             ])
             ->filters([
                 //
@@ -58,9 +56,9 @@ class DomainResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDomains::route('/'),
-            'create' => Pages\CreateDomain::route('/create'),
-            'edit' => Pages\EditDomain::route('/{record}/edit'),
+            'index' => Pages\ListCronJobs::route('/'),
+            'create' => Pages\CreateCronJob::route('/create'),
+            'edit' => Pages\EditCronJob::route('/{record}/edit'),
         ];
     }
 }
