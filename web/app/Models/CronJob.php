@@ -13,7 +13,7 @@ class CronJob extends Model
     public function getRows()
     {
 
-        exec('/usr/local/phyre/bin/crontab-list.sh', $output);
+        exec('/usr/local/phyre/bin/list-cron-jobs.sh', $output);
 
         dd($output);
 
