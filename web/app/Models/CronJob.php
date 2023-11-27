@@ -28,7 +28,7 @@ class CronJob extends Model
 
         static::creating(function ($model) {
             $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
-            $addCron = shell_exec('/usr/local/phyre/bin/add-cron-job.sh ' . $args);
+            $addCron = shell_exec('/usr/local/phyre/bin/cron-job-add.sh ' . $args);
             if (empty($addCron)) {
                 return false;
             }
@@ -38,7 +38,7 @@ class CronJob extends Model
 
             $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
             $args = str_replace(PHP_EOL, '', $args);
-            $command = '/usr/local/phyre/bin/delete-cron-job.sh ' . $args;
+            $command = '/usr/local/phyre/bin/cron-job-delete.sh ' . $args;
             $deleteCron = shell_exec($command);
             if (empty($deleteCron)) {
                 return false;
@@ -55,7 +55,7 @@ class CronJob extends Model
     public function getRows()
     {
         $user = shell_exec('whoami');
-        $cronList = shell_exec('/usr/local/phyre/bin/list-cron-jobs.sh ' . $user);
+        $cronList = shell_exec('/usr/local/phyre/bin/cron-jobs-list.sh ' . $user);
 
         $rows = [];
         if (!empty($cronList)) {

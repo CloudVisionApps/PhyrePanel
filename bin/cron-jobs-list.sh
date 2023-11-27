@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Replace 'username' with the actual username you want to retrieve cron jobs for
 username=$1
 

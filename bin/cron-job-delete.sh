@@ -1,3 +1,5 @@
+#!/bin/bash
+
 username=$1
 schedule=$2
 command=$3
