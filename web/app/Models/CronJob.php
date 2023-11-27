@@ -10,9 +10,38 @@ class CronJob extends Model
 {
     use Sushi;
 
+    protected $fillable = [
+        'schedule',
+        'command',
+        'user',
+    ];
+
+    protected $schema = [
+        'schedule' => 'string',
+        'command' => 'string',
+        'user' => 'string',
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $args = escapeshellarg($model->user) .' '. escapeshellarg($model->schedule) . ' ' . escapeshellarg($model->command);
+            $addCron = shell_exec('/usr/local/phyre/bin/add-cron-job.sh ' . $args);
+            if (empty($addCron)) {
+                return false;
+            }
+        });
+    }
+
+    protected function sushiShouldCache()
+    {
+        return true;
+    }
+
     public function getRows()
     {
-
         $user = shell_exec('whoami');
         $cronList = shell_exec('/usr/local/phyre/bin/list-cron-jobs.sh ' . $user);
 
@@ -26,6 +55,7 @@ class CronJob extends Model
                             'schedule' => $cron['schedule'],
                             'command' => $cron['command'],
                             'user' => $user,
+                            'time'=> time(),
                         ];
                     }
                 }

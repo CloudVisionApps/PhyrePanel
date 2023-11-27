@@ -23,7 +23,16 @@ class CronJobResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('schedule')
+                    ->autofocus()
+                    ->required()
+                    ->label('Schedule'),
+                Forms\Components\TextInput::make('command')
+                    ->required()
+                    ->label('Command'),
+                Forms\Components\TextInput::make('user')
+                    ->required()
+                    ->label('User'),
             ]);
     }
 
