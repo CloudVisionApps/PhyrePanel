@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class WebsiteResource extends Resource
 {
@@ -25,11 +26,14 @@ class WebsiteResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('server_name')
-                    ->autofocus()
+
+                Forms\Components\TextInput::make('domain')
                     ->required()
-                    ->unique()
-                    ->placeholder('example.com'),
+                    ->suffixIcon('heroicon-m-globe-alt'),
+
+                Forms\Components\TextInput::make('root')
+                    ->default('/'),
+
             ]);
     }
 
@@ -37,7 +41,7 @@ class WebsiteResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('server_name')
+                Tables\Columns\TextColumn::make('domain')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('root')

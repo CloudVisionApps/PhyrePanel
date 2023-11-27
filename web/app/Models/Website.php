@@ -13,13 +13,13 @@ class Website extends Model
 
     protected $fillable = [
         'file',
-        'server_name',
+        'domain',
         'root'
     ];
 
     protected $schema = [
         'file' => 'string',
-        'server_name' => 'string',
+        'domain' => 'string',
         'root' => 'string'
     ];
 
@@ -30,7 +30,7 @@ class Website extends Model
         static::creating(function ($model) {
 
             $createWebsite = ShellApi::callBin('website-create', [
-               $model->server_name,
+               $model->domain,
                'bobkata'
             ]);
 
@@ -42,7 +42,7 @@ class Website extends Model
 
         static::deleting(function ($model) {
             $deleteWebsite = ShellApi::callBin('website-delete', [
-                $model->server_name
+                $model->domain
             ]);
             if (empty($deleteWebsite)) {
                 return false;
@@ -67,7 +67,7 @@ class Website extends Model
                     if (isset($website['file'])) {
                         $rows[] = [
                             'file' => $website['file'],
-                            'server_name' => $website['server_name'],
+                            'domain' => $website['server_name'],
                             'root' => $website['root']
                         ];
                     }
